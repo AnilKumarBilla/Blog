@@ -9,61 +9,22 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <div class="card my-2">
-            <div class="card-body">
-              <p class="m-0">Category Name</p>
-              <a href="#" class="m-0 text-dark">This is going to be the title of the blog</a>
-              <p class="m-0">This is some part of the description</p>
-              <h6 class="m-0">Created by: Instacks <small>10 Days ago</small></h5>
-            </div>
-          </div>
+
+          @foreach($blogs as $blog)
 
           <div class="card my-2">
             <div class="card-body">
-              <p class="m-0">Category Name</p>
-              <a href="#" class="m-0 text-dark">This is going to be the title of the blog</a>
-              <p class="m-0">This is some part of the description</p>
-              <h6 class="m-0">Created by: Instacks <small>10 Days ago</small></h5>
+              <p class="m-0 badge badge-primary">Category Name</p><br>
+              <a href="{{ route('viewBlog', [ $blog['id'], $blog['slug'] ] ) }}" class="m-0 text-dark">{{ $blog['title'] }}</a>
+              <p class="m-0"> {{ substr( strip_tags($blog['content']) , 0, 100 ) }} </p>
+              <h6 class="m-0">Created by: Instacks <small>{{ $blog['created_at']->diffForHumans() }}</small></h5>
             </div>
           </div>
 
-          <div class="card my-2">
-            <div class="card-body">
-              <p class="m-0">Category Name</p>
-              <a href="#" class="m-0 text-dark">This is going to be the title of the blog</a>
-              <p class="m-0">This is some part of the description</p>
-              <h6 class="m-0">Created by: Instacks <small>10 Days ago</small></h5>
-            </div>
-          </div>
+          @endforeach
 
-          <div class="card my-2">
-            <div class="card-body">
-              <p class="m-0">Category Name</p>
-              <a href="#" class="m-0 text-dark">This is going to be the title of the blog</a>
-              <p class="m-0">This is some part of the description</p>
-              <h6 class="m-0">Created by: Instacks <small>10 Days ago</small></h5>
-            </div>
-          </div>
-
-          <div class="card my-2">
-            <div class="card-body">
-              <p class="m-0">Category Name</p>
-              <a href="#" class="m-0 text-dark">This is going to be the title of the blog</a>
-              <p class="m-0">This is some part of the description</p>
-              <h6 class="m-0">Created by: Instacks <small>10 Days ago</small></h5>
-            </div>
-          </div>
-
-          <div class="card my-2">
-            <div class="card-body">
-              <p class="m-0">Category Name</p>
-              <a href="#" class="m-0 text-dark">This is going to be the title of the blog</a>
-              <p class="m-0">This is some part of the description</p>
-              <h6 class="m-0">Created by: Instacks <small>10 Days ago</small></h5>
-            </div>
-          </div>
         </div>
-        
+
         <div class="col-md-4">
           <div class="list-group sticky-top my-2">
             <a href="#" class="list-group-item list-group-item-action active">

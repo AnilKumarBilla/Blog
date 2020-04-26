@@ -15,7 +15,7 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form> -->
-      <a href="#" class="btn btn-outline-dark btn-sm mx-2">Create Blog</a>
+      <a href="{{ route('create_blog') }}" class="btn btn-outline-dark btn-sm mx-2">Create Blog</a>
       <a href="#" class="mx-2 text-secondary"><i class="fas fa-search"></i></a>
       <a href="#" class="mx-2 text-secondary"><i class="far fa-bookmark"></i></a>
       <a href="#" class="mx-2 text-secondary"><i class="far fa-bell"></i></a>

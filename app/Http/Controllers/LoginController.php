@@ -8,6 +8,8 @@ use App\User;
 
 use Illuminate\Support\Facades\Hash;
 
+use Auth;
+
 class LoginController extends Controller
 {
     public function login()
@@ -35,6 +37,26 @@ class LoginController extends Controller
        $user->save();
 
        return redirect(route('register'))->with('success','Account Created Successfully');
+
+    }
+
+    public function loginAccount(Request $request)
+    {
+      $credentials = $request->only('email', 'password');
+
+      return $credentials;
+
+        if (Auth::attempt($credentials)) {
+            return "Authneticated";
+        }
+        return Auth::user();
+      if(Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember))
+      {
+        return redirect()->intended(route('index'));
+      }
+        else {
+          return "invalid credentials";
+        }
 
     }
 }

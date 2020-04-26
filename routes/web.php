@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', 'IndexController@index')->name('index');
 
 // Auth::routes();
 
@@ -29,3 +27,11 @@ Route::get('/login', 'LoginController@login')->name('login');
 Route::get('/register', 'LoginController@register')->name('register');
 
 Route::post('/register_account', 'LoginController@createAccount')->name('register_account');
+
+Route::post('/login_account', 'LoginController@loginAccount')->name('login_account');
+
+Route::get('/create_blog', 'BlogController@createBlog')->name('create_blog');
+Route::post('/save_blog', 'BlogController@saveBlog')->name('save_blog');
+
+
+Route::get('/blog/{id}/{slug}', 'BlogController@viewBlog')->name('viewBlog');
