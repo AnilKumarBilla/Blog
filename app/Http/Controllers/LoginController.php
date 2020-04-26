@@ -44,13 +44,13 @@ class LoginController extends Controller
     {
       $credentials = $request->only('email', 'password');
 
-      return $credentials;
+      // return $credentials;
 
         if (Auth::attempt($credentials)) {
             return "Authneticated";
         }
         return Auth::user();
-      if(Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember))
+      if(Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember))
       {
         return redirect()->intended(route('index'));
       }

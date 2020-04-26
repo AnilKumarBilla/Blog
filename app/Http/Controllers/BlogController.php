@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 
 use App\Blog;
 
+use App\Comment;
+
 class BlogController extends Controller
 {
     public function createBlog()
@@ -42,6 +44,21 @@ class BlogController extends Controller
         $blog->save();
 
         return view('blog', compact('blog'));
+
+    }
+
+    public function createComment(Request $request, $id)
+    {
+
+      $comment = new Comment();
+      $comment->blog_id = $id;
+      $comment->comment = $request['comment'];
+      $comment->user_id = 4;
+      $comment->save();
+
+      $blog = Blog::where('id', $id)->firstOrFail();
+
+      return redirect(route('viewBlog', [ $blog['id'], $blog['slug'] ]));
 
     }
 }

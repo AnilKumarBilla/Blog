@@ -35,3 +35,5 @@ Route::post('/save_blog', 'BlogController@saveBlog')->name('save_blog');
 
 
 Route::get('/blog/{id}/{slug}', 'BlogController@viewBlog')->name('viewBlog');
+
+Route::post('/add_comment/{id}', 'BlogController@createComment')->name('create_comment');
